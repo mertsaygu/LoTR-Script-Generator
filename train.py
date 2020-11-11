@@ -100,7 +100,7 @@ def train_model(dataset, epochs):
     Output: tensorflow.keras.model.history
         History of training 
     '''
-    model = build_model(vocab_size, EMBEDDING_DIM, RNN_UNITS, BATCH_SIZE)
+    model = build_model(vocab_size, param["embedding_dim"], param["rnn_units"], param["batch_size"])
     checkpoint_prefix = os.path.join(checkpoint_dir,'ckpt_{epoch}')
     checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
         filepath = checkpoint_prefix,
