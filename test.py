@@ -13,6 +13,7 @@ def split_input_target(chunk):
     return input_text, output_Text
 
 base = os.getcwd()
+base = os.path.join(base,"LoTR-Script-Generator")
 param_path = os.path.join(base,'parameters.json')
 data_path = os.path.join(base, 'data')
 file_path = os.path.join(data_path,'dataset.txt')
@@ -30,13 +31,13 @@ text_as_int = np.array([char2idx[c] for c in data])
 examples_per_epoch = len(data)
 char_dataset = tf.data.Dataset.from_tensor_slices(text_as_int)
 
-sequences = char_dataset.batch(seq_length+1,drop_remainder = True)
+sequences = char_dataset.batch(param["seq_length"]+1,drop_remainder = True)
 dataset = sequences.map(split_input_target)
 dataset = dataset.shuffle(param['buffer_size']).batch(param['batch_size'],drop_remainder=True)
 vocab_size = len(vocab)
 
 def generate_text(model,start_string,num_to_generate=1000,temperature = 1.0):
-   '''
+    '''
    Predictor
    
    Parameters

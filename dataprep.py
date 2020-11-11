@@ -38,7 +38,7 @@ def loadHyperParameters(path):
     return param
     
 base = os.getcwd()
+base = os.path.join(base,"LoTR-Script-Generator")
 datadir = os.path.join(base,"data")
 csvDir = os.path.join(datadir,"lotr_scripts.csv")
 
-prepText(create_dataset(csvDir),datadir)

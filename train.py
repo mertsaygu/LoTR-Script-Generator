@@ -7,6 +7,7 @@ from datetime import datetime
 
 
 base = os.getcwd()
+base = os.path.join(base,"LoTR-Script-Generator")
 param_path = os.path.join(base,'parameters.json')
 data_path = os.path.join(base, 'data')
 file_path = os.path.join(data_path,'dataset.txt')

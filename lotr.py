@@ -3,11 +3,6 @@ import os, dataprep, train, test,time
 # import tensorflow as tf 
 # from tensorflow.keras.preprocessing.text import Tokenizer
 
-# def split_input_target(chunk):
-#     input_text = chunk[:-1]
-#     output_Text = chunk[1:]
-#     return input_text, output_Text
-
 
 # base = os.getcwd()
 # param_path = os.path.join(base,'parameters.json')
@@ -15,7 +10,6 @@ import os, dataprep, train, test,time
 # file_path = os.path.join(data_path,'dataset.txt')
 # checkpoint_dir = os.path.join(base,'training_checkpoints')
 
-# seq_length, BATCH_SIZE, BUFFER_SIZE, EMBEDDING_DIM, RNN_UNITS, EPOCHS = dataprep.loadHyperParameters(param_path)
 
 # data = dataprep.readTxt(file_path)
 # vocab = sorted(set(data))
@@ -68,12 +62,11 @@ import os, dataprep, train, test,time
 # checkpoint_dir = os.path.join(base,'training_checkpoints')
 # saved_folder = os.path.join(base,"saved_models")
 
-# seq_length, BATCH_SIZE, BUFFER_SIZE, EMBEDDING_DIM, RNN_UNITS, EPOCHS = dataprep.loadHyperParameters(param_path)
+
 # data = dataprep.readTxt(file_path)
 # vocab = sorted(set(data))
 # vocab_size = len(vocab)
 # model = train.build_model(vocab_size, EMBEDDING_DIM, RNN_UNITS, BATCH_SIZE)
 # model.summary()
-#print(test.generate_text(model, "GOLLUM: ",num_to_generate=2000))
+print(test.generate_text(train.load_model("model_final2.h5"), "GOLLUM: ",num_to_generate=2000))
 
-with json
