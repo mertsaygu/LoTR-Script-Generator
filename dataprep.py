@@ -32,7 +32,7 @@ def readTxt(path):
     return file
             
 def readTxtwithn(path,n):
-    # Reads n lines of the text and returns the text
+    # Reads n lines of the text and returns the text 
     # NOTE: never used
     file = open(path,'r')
     text = file.readline([n])
