@@ -12,29 +12,6 @@ def split_input_target(chunk):
     output_Text = chunk[1:]
     return input_text, output_Text
 
-base = os.getcwd()
-base = os.path.join(base,"LoTR-Script-Generator")
-param_path = os.path.join(base,'parameters.json')
-data_path = os.path.join(base, 'data')
-file_path = os.path.join(data_path,'dataset.txt')
-checkpoint_dir = os.path.join(base,'training_checkpoints')
-generated_dir = os.path.join(base,"generated")
-
-param = dataprep.loadHyperParameters(param_path)
-
-data = dataprep.readTxt(file_path)
-vocab = sorted(set(data))
-char2idx = {u:i for i,u in enumerate(vocab)}
-idx2char = np.array(vocab)
-text_as_int = np.array([char2idx[c] for c in data])
-
-examples_per_epoch = len(data)
-char_dataset = tf.data.Dataset.from_tensor_slices(text_as_int)
-
-sequences = char_dataset.batch(param["seq_length"]+1,drop_remainder = True)
-dataset = sequences.map(split_input_target)
-dataset = dataset.shuffle(param['buffer_size']).batch(param['batch_size'],drop_remainder=True)
-vocab_size = len(vocab)
 
 def generate_text(model,start_string,num_to_generate=1000,temperature = 1.0):
     '''
@@ -91,3 +68,28 @@ def generatedText(text):
     f.write(text)
     f.close()
 
+if __name__ == "__main__":
+    pass
+else:
+    base = os.getcwd()
+    param_path = os.path.join(base,'parameters.json')
+    data_path = os.path.join(base, 'data')
+    file_path = os.path.join(data_path,'dataset.txt')
+    checkpoint_dir = os.path.join(base,'training_checkpoints')
+    generated_dir = os.path.join(base,"generated")
+
+    param = dataprep.loadHyperParameters(param_path)
+
+    data = dataprep.readTxt(file_path)
+    vocab = sorted(set(data))
+    char2idx = {u:i for i,u in enumerate(vocab)}
+    idx2char = np.array(vocab)
+    text_as_int = np.array([char2idx[c] for c in data])
+
+    examples_per_epoch = len(data)
+    char_dataset = tf.data.Dataset.from_tensor_slices(text_as_int)
+
+    sequences = char_dataset.batch(param["seq_length"]+1,drop_remainder = True)
+    dataset = sequences.map(split_input_target)
+    dataset = dataset.shuffle(param['buffer_size']).batch(param['batch_size'],drop_remainder=True)
+    vocab_size = len(vocab)

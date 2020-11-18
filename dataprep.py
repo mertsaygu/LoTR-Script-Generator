@@ -43,9 +43,12 @@ def loadHyperParameters(path):
     with open(path,'r') as f :
         param = json.load(f)
     return param
-    
-base = os.getcwd()
-base = os.path.join(base,"LoTR-Script-Generator")
-datadir = os.path.join(base,"data")
-csvDir = os.path.join(datadir,"lotr_scripts.csv")
+
+
+if __name__ == "__main__":
+    pass
+else:
+    base = os.getcwd()
+    datadir = os.path.join(base,"data")
+    csvDir = os.path.join(datadir,"lotr_scripts.csv")
 

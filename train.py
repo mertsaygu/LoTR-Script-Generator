@@ -135,18 +135,18 @@ def save_model(model):
     model_path = os.path.join(saved_folder,model_name)
     model.save(model_path)
 
-    if __name__ == main():
-        # Creating paths that i need
-        base = os.getcwd()
-        base = os.path.join(base,"LoTR-Script-Generator")
-        param_path = os.path.join(base,'parameters.json')
-        data_path = os.path.join(base, 'data')
-        file_path = os.path.join(data_path,'dataset.txt')
-        checkpoint_dir = os.path.join(base,'training_checkpoints')
-        saved_folder = os.path.join(base,"saved_models")
-
-        # Loading parameters and preparing dataset
-        param = dataprep.loadHyperParameters(param_path)
-        data = dataprep.readTxt(file_path)
-        vocab = sorted(set(data))
-        vocab_size = len(vocab)
+if __name__ == "__main__":
+   pass
+else:
+    # Creating paths that i need
+    base = os.getcwd()
+    param_path = os.path.join(base,'parameters.json')
+    data_path = os.path.join(base, 'data')
+    file_path = os.path.join(data_path,'dataset.txt')
+    checkpoint_dir = os.path.join(base,'training_checkpoints')
+    saved_folder = os.path.join(base,"saved_models")
+    # Loading parameters and preparing dataset
+    param = dataprep.loadHyperParameters(param_path)
+    data = dataprep.readTxt(file_path)
+    vocab = sorted(set(data))
+    vocab_size = len(vocab)
