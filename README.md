@@ -9,7 +9,7 @@ In this project, I created a Neural Network that generates Lord of the Rings scr
 import train,test
 test.generate_text(train.load_model("model_final2.h5"), "GOLLUM: ",num_to_generate=2000)
 ```
-This single line of code can generate 2000 characters long Lord of the Rings script that starts with "GOLLUM: "
+This two lines of code can generate 2000 characters long Lord of the Rings script that starts with "GOLLUM: "
 
 ## Script.py
 
